@@ -1,5 +1,5 @@
 require('./style/normalize.css')
-require('./style/index.less')
+require('./style/index.scss')
 require('./script/main')
 
 

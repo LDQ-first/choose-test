@@ -3,12 +3,18 @@ body {
 }
 
 .main {
-    width: 400px;
-    height: 500px;
+  .localData {
+    width: 300px;
+    height: 100px;
     border: 1px solid #3f51b5;
     margin: 0 auto;
     padding: 20px 10px;
-    .result {
+    #result {
         width: 100px;
     }
+  }
+  .kaiyanapp {
+    
+  }
+    
 }

@@ -11,24 +11,29 @@ axios.get(path.resolve(__dirname, './src/data.json'))
         zone.addEventListener('change', () => {
             const index = zone.selectedIndex
             const value = zone[index].value
-            console.log('onChange')
             console.log(`value: ${value}`)
             console.log(`data: `, data)
             const resultOptions = data.zone[value] 
             let optionCode = ``
             console.log('resultOptions: ', resultOptions)
-            resultOptions.forEach((item, index) => {
-                const code = `<option value ="item">${item}</option>`
-                optionCode += code
-            })
-            result.innerHTML = optionCode
+            if (resultOptions) {
+              resultOptions.forEach((item, index) => {
+                  const code = `<option value ="item">${item}</option>`
+                  optionCode += code
+              })
+              result.innerHTML = optionCode
+            }
         })
      })
 
 
+// http://baobab.kaiyanapp.com/api/v4/discovery
+
+// https://bird.ioliu.cn/v2?url=http://baobab.kaiyanapp.com/api/v4/discovery/category
+// https://bird.ioliu.cn/v2?url=http://baobab.kaiyanapp.com/api/v4/discovery/hot
 
 
-/* zone.addEventListener('click', () => {
-    console.log('Click')
-}) */
+
+
+
 
