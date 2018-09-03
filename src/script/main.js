@@ -32,8 +32,20 @@ axios.get(path.resolve(__dirname, './src/data.json'))
 // https://bird.ioliu.cn/v2?url=http://baobab.kaiyanapp.com/api/v4/discovery/category
 // https://bird.ioliu.cn/v2?url=http://baobab.kaiyanapp.com/api/v4/discovery/hot
 
+const categoryUrl = 'https://bird.ioliu.cn/v2?url=http://baobab.kaiyanapp.com/api/v4/discovery/category'
+const hotUrl = 'https://bird.ioliu.cn/v2?url=http://baobab.kaiyanapp.com/api/v4/discovery/hot'
 
+const category = () => axios.get(categoryUrl)
+const hot = () => axios.get(hotUrl)
 
+axios.all( [ category(), hot() ] )
+     .then( axios.spread( ( categoryRes, hotRes) => {
+        const { data: categoryData } = categoryRes
+        const { data: hotData } = hotRes
+        console.log(`categoryData: `, categoryData)
+        console.log(`hotData: `, hotData)
+        
+     } ) )
 
 
 
