@@ -4,10 +4,12 @@ const path = require('path')
 const UglifyPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: ['@babel/polyfill', path.resolve(__dirname, 'src/index.js')],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'output-[name].js'
@@ -68,7 +70,11 @@ module.exports = {
     }),
     new ExtractTextPlugin('[name].css'),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin([
+      { from: './src/data.json', to: './src/data.json' }, // 顾名思义，from 配置来源，to 配置目标路径  
+    ]),
+    new CleanWebpackPlugin('./dist')
   ],
   devServer: {
     hot: true

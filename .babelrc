@@ -1,5 +1,22 @@
 {
     "presets": [
-        "@babel/preset-env"       
+      [
+        "@babel/preset-env", 
+        {
+          "modules": false,
+          "loose": true,
+          /* "useBuiltIns": "entry",
+          "targets": {
+            "browsers": [
+              ">= 0.1%"
+            ]
+          }, */
+          "debug": true
+        }  
+      ]
+    ],
+    "plugins": [
+      "@babel/transform-runtime",
+      "syntax-dynamic-import"
     ]
 }
